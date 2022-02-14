@@ -76,37 +76,47 @@ jobs:
       uses: actions/checkout@v2 
     - name: Install dependencies
       uses: asdf-vm/actions/install@v1
-    - name: Import Docker registry creds from Vault
-      id: creds
-      env:
-        VAULT_ADDR: https://vault-cluster.vault.52a7c979-da4b-40f2-94d6-7d4c5ead3d3a.aws.hashicorp.cloud:8200
-        VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
+#     - name: Import Docker registry creds from Vault
+#       id: creds
+#       env:
+#         VAULT_ADDR: https://vault-cluster.vault.52a7c979-da4b-40f2-94d6-7d4c5ead3d3a.aws.hashicorp.cloud:8200
+#         VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
+#       run: |
+#         echo ::set-output name=DOCKER_PASSWORD::$(curl -X 'GET' \
+#         '${{env.VAULT_ADDR}}/v1/vmware-demo/docker-registry' \
+#         -H 'accept: */*' \
+#         -H 'X-Vault-Token: ${{env.VAULT_TOKEN}}' \
+#         -H 'X-Vault-Namespace: admin' | jq -r .data.DOCKER_PASSWORD)
+#         echo ::set-output name=DOCKER_USERNAME::$(curl -X 'GET' \
+#         '${{env.VAULT_ADDR}}/v1/vmware-demo/docker-registry' \
+#         -H 'accept: */*' \
+#         -H 'X-Vault-Token: ${{env.VAULT_TOKEN}}' \
+#         -H 'X-Vault-Namespace: admin'|jq -r .data.DOCKER_USERNAME)
+#     - name: Get docker username
+#       run: |
+#         echo "docker username  is ${{steps.creds.outputs.DOCKER_USERNAME}}" 
+    - name: Download pivnet cli and login
+      run: | 
+        curl -L https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet
+        chmod u+x pivnet
+        ./pivnet login --api-token ${{ secrets.PIVNET_TOKEN }}
+    - name: Download kp cli 
       run: |
-        echo ::set-output name=DOCKER_PASSWORD::$(curl -X 'GET' \
-        '${{env.VAULT_ADDR}}/v1/vmware-demo/docker-registry' \
-        -H 'accept: */*' \
-        -H 'X-Vault-Token: ${{env.VAULT_TOKEN}}' \
-        -H 'X-Vault-Namespace: admin' | jq -r .data.DOCKER_PASSWORD)
-        echo ::set-output name=DOCKER_USERNAME::$(curl -X 'GET' \
-        '${{env.VAULT_ADDR}}/v1/vmware-demo/docker-registry' \
-        -H 'accept: */*' \
-        -H 'X-Vault-Token: ${{env.VAULT_TOKEN}}' \
-        -H 'X-Vault-Namespace: admin'|jq -r .data.DOCKER_USERNAME)
-    - name: Get docker username
-      run: |
-        echo "docker username  is ${{steps.creds.outputs.DOCKER_USERNAME}}" 
-
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v1.1.0
-      with:
-        username: ${{ steps.creds.outputs.DOCKER_USERNAME }}
-        password: ${{ steps.creds.outputs.DOCKER_PASSWORD }}
-        repository: ${{ steps.creds.outputs.DOCKER_USERNAME }}/hello-gitops
-        tags: ${{ github.sha }}, latest
-    - name: Scan image
-      uses: azure/container-scan@v0
-      with:
-        image-name: ${{ steps.creds.outputs.DOCKER_USERNAME }}/hello-gitops:${{ github.sha }}
+        pivnet download-product-files --product-slug='build-service' --release-version='1.4.2' --product-file-id=1082452
+        mv kp-linux-0.3.0 kp
+        chmod u+x kp
+        kp version
+#     - name: Build and push Docker image
+#       uses: docker/build-push-action@v1.1.0
+#       with:
+#         username: ${{ steps.creds.outputs.DOCKER_USERNAME }}
+#         password: ${{ steps.creds.outputs.DOCKER_PASSWORD }}
+#         repository: ${{ steps.creds.outputs.DOCKER_USERNAME }}/hello-gitops
+#         tags: ${{ github.sha }}, latest
+#     - name: Scan image
+#       uses: azure/container-scan@v0
+#       with:
+#         image-name: ${{ steps.creds.outputs.DOCKER_USERNAME }}/hello-gitops:${{ github.sha }}
   deploy:
     
 
