@@ -103,7 +103,7 @@ jobs:
         ./pivnet login --api-token ${{ secrets.PIVNET_TOKEN }}
     - name: Download kp cli 
       run: |
-        pivnet download-product-files --product-slug='build-service' --release-version='1.4.2' --product-file-id=1082452
+        ./pivnet download-product-files --product-slug='build-service' --release-version='1.4.2' --product-file-id=1082452
         mv kp-linux-0.4.2 kp
         chmod u+x kp
         kp version
