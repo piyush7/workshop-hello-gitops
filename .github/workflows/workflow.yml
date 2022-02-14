@@ -106,7 +106,7 @@ jobs:
         ./pivnet download-product-files --product-slug='build-service' --release-version='1.4.2' --product-file-id=1082452
         mv kp-linux-0.4.2 kp
         chmod u+x kp
-        kp version
+        ./kp version
 #     - name: Build and push Docker image
 #       uses: docker/build-push-action@v1.1.0
 #       with:
