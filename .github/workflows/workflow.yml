@@ -97,7 +97,8 @@ jobs:
 #         echo "docker username  is ${{steps.creds.outputs.DOCKER_USERNAME}}" 
     - name: Download pivnet cli and login
       run: | 
-        curl -L https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet
+        curl  https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet 
+        ls -larth
         chmod u+x pivnet
         ./pivnet login --api-token ${{ secrets.PIVNET_TOKEN }}
     - name: Download kp cli 
