@@ -98,8 +98,8 @@ jobs:
 
     - name:  Use the context set passed in GH-secret
       run: |
-        echo ${{secrets.KUBECONFIG_DRAGONSTONE}} | base64 -d >> kubeconfig-file
-        kubectl get nodes --kubeconfig=.kubeconfig-file
+        echo ${{secrets.KUBECONFIG_DRAGONSTONE}} | base64 -d > kubeconfig-file
+        kubectl get nodes --kubeconfig=kubeconfig-file
     - name: Download pivnet cli and login
       run: | 
         curl -L  https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet 
