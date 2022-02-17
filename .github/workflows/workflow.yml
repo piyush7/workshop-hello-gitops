@@ -99,9 +99,9 @@ jobs:
     - name:  Use the context set passed in GH-secret
       run: |
         echo ${{secrets.KUBECONFIG_DRAGONSTONE}} | base64 -d > kubeconfig-file
-        kubectl get nodes --kubeconfig=kubeconfig-file
-        kubectl config get-contexts
-        kubectl config set-context dorn-admin@dorn
+        export KUBECONFIG=kubeconfig-file
+        kubectl get nodes
+
         
     - name: Download pivnet cli and login
       run: | 
