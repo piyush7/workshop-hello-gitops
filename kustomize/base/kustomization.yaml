@@ -6,5 +6,5 @@ resources:
 namespace: production
 images:
 - name: hello-gitops
-  newName: pkatira7/hello-gitops
-  newTag: ca7226d5292dc061c0ffbea97cbab32e98a99ba6
+  newName: harbor.dorn.tkg-aws-e2-lab.winterfell.katirap.xyz/build-service/hello-gitops
+  newTag: 0.1
