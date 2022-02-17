@@ -109,13 +109,14 @@ jobs:
         ls -larth
         chmod u+x pivnet
         ./pivnet login --api-token ${{ secrets.PIVNET_TOKEN }}
-    - name: Download kp cli 
+    - name: Download kp cli and patch
       run: |
         ./pivnet download-product-files --product-slug='build-service' --release-version='1.4.2' --product-file-id=1082452
         mv kp-linux-0.4.2 kp
         chmod u+x kp
         export KUBECONFIG=kubeconfig-file
         ./kp image list
+        ./kp image patch --git-revision=$(Build.SourceVersion) --wait hello-gitops
 #     - name: Build and push Docker image
 #       uses: docker/build-push-action@v1.1.0
 #       with:
