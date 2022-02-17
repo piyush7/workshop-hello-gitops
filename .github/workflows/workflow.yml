@@ -100,6 +100,9 @@ jobs:
       run: |
         echo ${{secrets.KUBECONFIG_DRAGONSTONE}} | base64 -d > kubeconfig-file
         kubectl get nodes --kubeconfig=kubeconfig-file
+        kubectl config get-contexts
+        kubectl config set-context dorn-admin@dorn
+        
     - name: Download pivnet cli and login
       run: | 
         curl -L  https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet 
@@ -111,7 +114,7 @@ jobs:
         ./pivnet download-product-files --product-slug='build-service' --release-version='1.4.2' --product-file-id=1082452
         mv kp-linux-0.4.2 kp
         chmod u+x kp
-        ./kp version
+        ./kp image list
 #     - name: Build and push Docker image
 #       uses: docker/build-push-action@v1.1.0
 #       with:
