@@ -20,8 +20,8 @@ spec:
         runAsNonRoot: true
         runAsUser: 10001
       containers:
-      - image: hello-gitops
-        name: hello-gitops
+      - image: hello-gitops-1
+        name: hello-gitops-1
         ports:
           - name: http
             containerPort: 8080
