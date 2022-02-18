@@ -157,17 +157,17 @@ jobs:
       with:
         kustomize-version: "3.6.1"
 
-    - name: Update Kubernetes resources
-      env:
-        DOCKER_USERNAME: pkatira7
-      run: |
-       echo $GITHUB_SHA
-       cd kustomize/base
-       kustomize edit set image hello-gitops=${{env.DOCKER_USERNAME}}/hello-gitops:$GITHUB_SHA
-       cat kustomization.yaml
-       sed -i "s/production/development/" kustomization.yaml
-       sed -i "s/hello-world-prod/hello-world-dev/" ../../argo-apps/hello-world.yaml
-       sed -i "s/master/development/" ../../argo-apps/hello-world.yaml
+#     - name: Update Kubernetes resources
+#       env:
+#         DOCKER_USERNAME: pkatira7
+#       run: |
+#        echo $GITHUB_SHA
+#        cd kustomize/base
+#        kustomize edit set image hello-gitop-1=hello-gitops-1
+#        cat kustomization.yaml
+#        sed -i "s/production/development/" kustomization.yaml
+#        sed -i "s/hello-world-prod/hello-world-dev/" ../../argo-apps/hello-world.yaml
+#        sed -i "s/master/development/" ../../argo-apps/hello-world.yaml
 
       
         
@@ -200,13 +200,13 @@ jobs:
         with:
           directory: kustomize/base
           skip_check: CKV_K8S_21,CKV_K8S_31,CKV_K8S_43,CKV_K8S_14
-#       - name: Update Kubernetes resources
-#         env:
-#           DOCKER_USERNAME: pkatira7
-#         run: |
-#             echo $GITHUB_SHA
-#             cd kustomize/base
-#             kustomize edit set image hello-gitops=${DOCKER_USERNAME}/hello-gitops:$GITHUB_SHA
+      - name: Update Kubernetes resources
+        env:
+          DOCKER_USERNAME: pkatira7
+        run: |
+            echo $GITHUB_SHA
+            cd kustomize/base
+            kustomize edit set image hello-gitop-1=hello-gitops-1
 #             cat kustomization.yaml
 
 #             sed -i "s/development/production/" kustomization.yaml
