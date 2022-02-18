@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - deployment.yaml
 - service.yaml
-namespace: development
+namespace: production
 images:
 - name: hello-gitops-1
   newName: harbor.dorn.tkg-aws-e2-lab.winterfell.katirap.xyz/build-service/hello-gitops-1
