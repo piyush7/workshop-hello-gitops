@@ -206,7 +206,8 @@ jobs:
         run: |
             echo $GITHUB_SHA
             cd kustomize/base
-            kustomize edit set image hello-gitop-1=hello-gitops-1
+            touch kustomization.yaml
+#            kustomize edit set image hello-gitop-1=hello-gitops-1
 #             cat kustomization.yaml
 
 #             sed -i "s/development/production/" kustomization.yaml
