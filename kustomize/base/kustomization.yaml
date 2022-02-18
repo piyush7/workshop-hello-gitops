@@ -7,4 +7,3 @@ namespace: production
 images:
 - name: hello-gitops
   newName: harbor.dorn.tkg-aws-e2-lab.winterfell.katirap.xyz/build-service/hello-gitops
-  newTag: aa86dad2bcffa584f7aa399d83bdc095121638c9
