@@ -157,13 +157,10 @@ jobs:
       with:
         kustomize-version: "3.6.1"
 
-    - name: Update Kubernetes resources
-      env:
-        DOCKER_USERNAME: pkatira7
-      run: |
-        echo $GITHUB_SHA
-        cd kustomize/base
-        sed -i "s/development/production" kustomization.yaml
+#     - name: Update Kubernetes resources
+#       env:
+#         DOCKER_USERNAME: pkatira7
+#       run: |
 #        sed -i "s/hello-world-prod/hello-world-dev/" ../../argo-apps/hello-world.yaml
 #        sed -i "s/master/development/" ../../argo-apps/hello-world.yaml
 
@@ -204,7 +201,7 @@ jobs:
         run: |
           echo $GITHUB_SHA
           cd kustomize/base
-          sed -i "s/development/production" kustomization.yaml
+          sed -i "s/development/production/" kustomization.yaml
 #           kustomize edit set image hello-gitop-1=hello-gitops-1
 #             sed -i "s/hello-world-dev/hello-world-prod/" ../../argo-apps/hello-world.yaml
 #             sed -i "s/development/master/" ../../argo-apps/hello-world.yaml
