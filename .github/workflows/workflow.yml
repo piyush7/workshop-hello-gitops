@@ -215,16 +215,16 @@ jobs:
 #             sed -i "s/development/master/" ../../argo-apps/hello-world.yaml
 
    
-#       - name: Commit files
-#         run: |
-#           git config --local user.email "action@github.com"
-#           git config --local user.name "GitHub Action"
-#           git commit -am "Image version: $GITHUB_SHA"
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Image version: $GITHUB_SHA"
 
-#       - name: Push changes
-#         uses: ad-m/github-push-action@master
-#         with:
-#            github_token: ${{ secrets.GITHUB_TOKEN }}
-#            branch: ${{ github.ref }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           branch: ${{ github.ref }}
     
 
