@@ -116,7 +116,7 @@ jobs:
         chmod u+x kp
         export KUBECONFIG=kubeconfig-file
         ./kp image list
-        ./kp image patch --git-revision=$(Build.SourceVersion) --wait hello-gitops
+# ./kp image patch --git-revision=$(Build.SourceVersion) --wait hello-gitops
 #     - name: Build and push Docker image
 #       uses: docker/build-push-action@v1.1.0
 #       with:
