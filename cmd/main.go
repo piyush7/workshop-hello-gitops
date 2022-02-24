@@ -22,10 +22,10 @@ func startServer(handler func(http.ResponseWriter, *http.Request)){
 func handler(w http.ResponseWriter, r *http.Request){
 	log.Printf("received request from %s", r.Header.Get("User-Agent"))
 	_, err := os.Hostname()
-	if err != nil {
+	if err != nil {	
 		log.Printf("unknown host")
 	}
-	resp := fmt.Sprintf("Hello Salah!!")
+	resp := fmt.Sprintf("Hello Salah!!!")
 
 	_, err = w.Write([]byte(resp))
 	if err != nil {
