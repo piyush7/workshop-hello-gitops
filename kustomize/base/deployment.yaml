@@ -20,8 +20,8 @@ spec:
         runAsNonRoot: true
         runAsUser: 10001
       containers:
-      - image: hello-gitops-3
-        name: hello-gitops-3
+      - image: hello-gitops-4
+        name: hello-gitops-4
         imagePullPolicy: Always
         ports:
           - name: http
