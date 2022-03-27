@@ -13,5 +13,5 @@ namespace: production
 #   path: ./ingress-patch.yaml
 images:
 - name: hello-gitops-3
-  newName: harbor.dorn.tkg-aws-e2-lab.winterfell.katirap.xyz/build-service/hello-gitops-3
+  newName: harbor.dorn.tkg-aws-e2-lab.winterfell.katirap.xyz/build-service/hello-gitops-3:latest
   
