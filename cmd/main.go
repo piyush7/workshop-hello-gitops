@@ -25,7 +25,7 @@ func handler(w http.ResponseWriter, r *http.Request){
 	if err != nil {	
 		log.Printf("unknown host")
 	}
-	resp := fmt.Sprintf("Hello  KFU team!!")
+	resp := fmt.Sprintf("Hello  KFU team from vmware!!!")
 
 	_, err = w.Write([]byte(resp))
 	if err != nil {
