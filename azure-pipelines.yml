@@ -62,7 +62,7 @@ steps:
         echo "Image is present"
         GIT_COMMIT_ID=`git rev-parse HEAD`
         echo $GIT_COMMIT_ID
-        kp image patch hello-gitops --git-revision $GIT_COMMIT_ID
+        ./kp image patch hello-gitops --git-revision $GIT_COMMIT_ID
         ./kp image status hello-gitops | grep Ready
         while [ $? == 1 ]
           do 
