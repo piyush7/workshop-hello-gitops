@@ -30,9 +30,14 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
+    # kubernetesServiceConnection: 'gke-tap-sincandela'
     script: |
       curl -L  https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet 
       ls -larth
        chmod u+x pivnet
        ./pivnet login --api-token  6b12f0c86084493d9177f92494d422bb-r 
-       pivnet version
+       pivnet version 
+       ./pivnet download-product-files --product-slug='build-service' --release-version='1.4.2' --product-file-id=1082452
+        mv kp-linux-0.4.2 kp
+        chmod u+x kp
+        kp version
