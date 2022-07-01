@@ -56,6 +56,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+    
       ls -larth
       ./kp image list -n dev5  | grep 'hello-gitops'
       if [ $? == 0 ] 
