@@ -70,7 +70,7 @@ steps:
       
       ./kp image status hello-gitops | grep Ready
       
-      while [ $? == 0 ]
+      while [ $? == 1 ]
       do 
       ./kp image status hello-gitops | grep Ready
       done
