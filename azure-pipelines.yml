@@ -62,18 +62,8 @@ steps:
         echo "Image is present"
         GIT_COMMIT_ID=`git rev-parse HEAD`
         echo $GIT_COMMIT_ID
-        ./kp image patch hello-gitops --git-revision $GIT_COMMIT_ID
-        ./kp image status hello-gitops | grep Ready
-        while [ $? == 1 ]
-          do 
-          ./kp image status hello-gitops | grep Ready
-          done
+        ./kp image patch hello-gitops --git-revision $GIT_COMMIT_ID -n dev5 -w
       else
-        ./kp image create hello-gitops --git https://github.com/piyush7/workshop-hello-gitops --git-revision master -t gcr.io/pkatira-se/build-service/hello-gitops-8 -w -n dev5      
-        ./kp image status hello-gitops | grep Ready
-        while [ $? == 1 ]
-          do 
-          ./kp image status hello-gitops | grep Ready
-          done
+        ./kp image create hello-gitops --git https://github.com/piyush7/workshop-hello-gitops --git-revision master -t gcr.io/pkatira-se/build-service/hello-gitops-8 -w -n dev5
       fi
-      
+            
