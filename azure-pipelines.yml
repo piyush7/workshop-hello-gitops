@@ -21,9 +21,18 @@ steps:
 - task: KubectlInstaller@0
   inputs:
     kubectlVersion: 'latest'
-- task: KubernetesManifest@0
+# - task: KubernetesManifest@0
+#   inputs:
+#     action: 'deploy'
+#     kubernetesServiceConnection: 'gke-tap-sincandela'
+#     namespace: 'nginx'
+#     manifests: 'nginx.yaml'
+- task: Bash@3
   inputs:
-    action: 'deploy'
-    kubernetesServiceConnection: 'gke-tap-sincandela'
-    namespace: 'nginx'
-    manifests: 'nginx.yaml'
+    targetType: 'inline'
+    script: |
+      curl -L  https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1 -o pivnet 
+      ls -larth
+       chmod u+x pivnet
+       ./pivnet login --api-token  6b12f0c86084493d9177f92494d422bb-r 
+       pivnet version
