@@ -25,4 +25,5 @@ steps:
   inputs:
     action: 'deploy'
     kubernetesServiceConnection: 'gke-tap-sincandela'
+    namespace: 'nginx'
     manifests: 'nginx.yaml'
