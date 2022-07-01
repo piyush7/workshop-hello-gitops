@@ -50,5 +50,5 @@ steps:
         mv kp-linux-0.4.2 kp
         chmod u+x kp
        # ./kp version
-        kp image list -n dev5
+        ./kp image list -n dev5
     
