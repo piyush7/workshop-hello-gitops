@@ -62,10 +62,13 @@ steps:
         echo "Image is present"
         IMAGE_TAG=`git rev-parse HEAD`
         echo $IMAGE_TAG
-        ./kp image patch hello-gitops --git-revision $GIT_COMMIT_ID -n dev5 -w
+        ./kp image patch hello-gitops --git-revision $IMAGE_TAG -n dev5 -w
       else
         ./kp image create hello-gitops --git https://github.com/piyush7/workshop-hello-gitops --git-revision master -t gcr.io/pkatira-se/build-service/hello-gitops -w -n dev5
       fi
       cp kustomize/base/kustomization.yaml.template kustomize/base/kustomization.yaml
       sed -i "s/IMAGE_TAG/$IMAGE_TAG/g" kustomize/base/kustomization.yaml
+      git commit -am "AZ devops updated pipeline with commit: $IMAGE_TAG"
+      git push
+  
             
