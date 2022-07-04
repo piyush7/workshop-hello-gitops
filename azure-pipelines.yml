@@ -66,5 +66,6 @@ steps:
       else
         ./kp image create hello-gitops --git https://github.com/piyush7/workshop-hello-gitops --git-revision master -t gcr.io/pkatira-se/build-service/hello-gitops -w -n dev5
       fi
-
+      cp workshop-hello-gitops/kustomize/base/kustomization.yaml.template workshop-hello-gitops/kustomize/base/kustomization.yaml
+      sed -i "s/IMAGE_TAG/$IMAGE_TAG/g" workshop-hello-gitops/kustomize/base/kustomization.yaml
             
