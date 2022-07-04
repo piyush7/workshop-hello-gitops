@@ -10,9 +10,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- checkout: self
+  persistCredentials: true
+  clean: true
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
