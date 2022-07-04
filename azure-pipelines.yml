@@ -77,6 +77,7 @@ steps:
     script:  |      
       git config --global user.email "piyush.katira.7@gmail.com"
       git config --global user.name "Piyush Katira"
+      git checkout master
       git commit -am "AZ devops updated pipeline with commit: $IMAGE_TAG"
       git push
   
