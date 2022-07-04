@@ -14,4 +14,4 @@ namespace: production
 images:
 - name: hello-gitops
   newName: gcr.io/pkatira-se/build-service/hello-gitops
-  newTag: 35a1afea49574ef3073fae1978fc9499af289674
+  newTag: 623cb4eeb640855e23795e0213b613ca634744e28c15c04264e6fca94dce7289
