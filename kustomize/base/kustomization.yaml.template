@@ -13,5 +13,5 @@ namespace: production
 #   path: ./ingress-patch.yaml
 images:
 - name: hello-gitops
-  newName: gcr.io/pkatira-se/build-service/hello-gitops@sha256:
-  newTag: IMAGE_TAG
+  newName: gcr.io/pkatira-se/build-service/hello-gitops
+  digest: sha256:IMAGE_DIGEST
