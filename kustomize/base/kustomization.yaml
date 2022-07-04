@@ -13,5 +13,4 @@ namespace: production
 #   path: ./ingress-patch.yaml
 images:
 - name: hello-gitops
-  newName: gcr.io/pkatira-se/build-service/hello-gitops:latest
-  
+  newName: gcr.io/pkatira-se/build-service/hello-gitops:131f3e21e7d875e9693c749e234dcd4525c90d7d43e9090635a781ee373bf6b1
