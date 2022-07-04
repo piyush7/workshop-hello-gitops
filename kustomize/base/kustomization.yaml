@@ -14,4 +14,4 @@ namespace: production
 images:
 - name: hello-gitops
   newName: gcr.io/pkatira-se/build-service/hello-gitops
-  digest: sha256:70869769655a89b9fc103cca81823202147d3b31f5b9761e601607bad0d0518d
+  digest: sha256:b60d6c6f65f17126dc04fb88d62a07b961e22feacbe0e56373091b440b34e15f
