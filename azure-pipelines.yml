@@ -71,7 +71,7 @@ steps:
         IMAGE_DIGEST=`./kp build list hello-gitops  -n dev5 | grep SUCCESS | tail -1 | awk '{print $(3)}' | cut -d ':' -f2`
         echo $IMAGE_DIGEST
       else
-        ./kp image create hello-gitops --git https://github.com/piyush7/workshop-hello-gitops --git-revision master -t gcr.io/pkatira-se/build-service/hello-gitops -w -n dev5
+        ./kp image create hello-gitops --git https://github.com/piyush7/workshop-hello-gitops --git-revision master -t harbor.tanzu-demo.app/go-app/build-service/hello-gitops -w -n dev5
       fi
       cp kustomize/base/kustomization.yaml.template kustomize/base/kustomization.yaml
       sed -i "s/IMAGE_DIGEST/$IMAGE_DIGEST/g" kustomize/base/kustomization.yaml
