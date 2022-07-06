@@ -13,5 +13,5 @@ namespace: production
 #   path: ./ingress-patch.yaml
 images:
 - name: hello-gitops
-  newName: harbor.tanzu-demo.app/tap/build-service/hello-gitops
-  digest: sha256:fed428d8545f12bddbf76767a8ecd0afc1f86a901a6136abc18a75a8b068875f
+  newName: gcr.io/pkatira-se/build-service/hello-gitops
+  digest: sha256:0b529f730e9cc08c768388134e0fc923ad4d6ea9dd62cddd8441a5c36997467a
