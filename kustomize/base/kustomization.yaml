@@ -14,4 +14,4 @@ namespace: production
 images:
 - name: hello-gitops
   newName: harbor.tanzu-demo.app/tap/build-service/hello-gitops
-  digest: sha256:bfe635a4e55e717ec68e563bcf47e8041b955b2e4801c07fef688a7b62ec7490
+  digest: sha256:28303dd0d04a98878e1ca425dacdda5cc5f94822fc520c4e0df09b1b5f7b5e6c
